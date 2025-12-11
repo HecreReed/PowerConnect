@@ -207,7 +207,7 @@ pm2 logs powerconnect --lines 50
 
 - 查看 [README.md](./README.md) 项目说明
 - 查看 [DEPLOYMENT.md](./DEPLOYMENT.md) 部署指南
-- 提交 Issue: https://github.com/yourusername/PowerConnect/issues
+- 提交 Issue: https://github.com/HecreReed/PowerConnect/issues
 
 ---
 

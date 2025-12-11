@@ -29,7 +29,7 @@ chmod +x setup-server.sh
 sudo ./setup-server.sh
 
 # 方式 2: 远程执行（推荐）
-bash <(curl -fsSL https://raw.githubusercontent.com/yourusername/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/HecreReed/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh)
 ```
 
 **重要！** 脚本完成后会显示类似这样的信息：
