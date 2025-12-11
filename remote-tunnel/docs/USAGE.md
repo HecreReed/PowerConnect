@@ -14,10 +14,10 @@ ssh root@154.37.220.3
 
 ```bash
 # 下载脚本
-wget https://raw.githubusercontent.com/yourusername/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh
+wget https://raw.githubusercontent.com/HecreReed/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh
 
 # 或者如果没有 wget，使用 curl
-curl -O https://raw.githubusercontent.com/yourusername/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh
+curl -O https://raw.githubusercontent.com/HecreReed/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh
 
 # 运行安装脚本
 chmod +x setup-server.sh
@@ -600,7 +600,7 @@ location / {
 创建密码文件：
 
 ```bash
-sudo htpasswd -c /etc/nginx/.htpasswd yourusername
+sudo htpasswd -c /etc/nginx/.htpasswd admin
 ```
 
 ---
