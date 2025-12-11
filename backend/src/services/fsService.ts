@@ -19,8 +19,12 @@ export class FileSystemService {
    * Ensures path is within root directory
    */
   private resolvePath(requestedPath: string): string {
-    // Resolve the path relative to root
-    const resolved = path.resolve(this.rootDir, requestedPath);
+    // Remove leading slash and resolve relative to root
+    const normalizedPath = requestedPath.startsWith('/')
+      ? requestedPath.slice(1)
+      : requestedPath;
+
+    const resolved = path.resolve(this.rootDir, normalizedPath);
 
     // Check if path is within root directory (prevent path traversal)
     if (!resolved.startsWith(this.rootDir)) {

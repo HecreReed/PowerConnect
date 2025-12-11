@@ -1,40 +1,63 @@
 # PowerConnect - 快速参考
 
-## 一键安装
+## 一键安装和启动
+
+### 方式一：内网穿透（推荐 - 外网可访问）
 
 ```bash
-# 运行安装脚本
-./setup.sh
+# 1. 在云服务器上安装 frp 服务端
+bash <(curl -fsSL https://raw.githubusercontent.com/HecreReed/PowerConnect/main/remote-tunnel/scripts/frp/setup-server.sh)
+
+# 2. 在本地安装客户端和 PowerConnect
+cd PowerConnect
+./remote-tunnel/install.sh
+
+# 3. 配置 frp token (将服务器返回的 token 填入配置文件)
+nano remote-tunnel/config/frp/frpc.ini
+
+# 4. 启动隧道
+remote-tunnel up
+
+# 5. 启动后端服务
+cd backend
+npm install
+npm run dev
 ```
 
-## 常用命令
+访问: http://你的服务器IP:8443
 
-### 开发模式
+### 方式二：本地开发模式
 
 ```bash
-# 终端 1: 启动后端
+# 1. 安装依赖
+cd backend && npm install
+cd ../frontend && npm install
+
+# 2. 启动后端（终端 1）
 cd backend
 npm run dev
 
-# 终端 2: 启动前端
+# 3. 启动前端（终端 2）
 cd frontend
 npm run dev
 ```
 
 访问: http://localhost:5173
 
-### 生产模式
+### 方式三：生产模式部署
 
 ```bash
-# 使用 PM2
-cd backend
+# 1. 构建前端
+cd frontend
+npm run build
+
+# 2. 使用 PM2 启动后端
+cd ../backend
+npm install pm2 -g
 pm2 start ecosystem.config.js
 
-# 查看日志
-pm2 logs powerconnect
-
-# 停止服务
-pm2 stop powerconnect
+# 3. 查看状态
+pm2 status
 ```
 
 访问: http://localhost:3000
@@ -45,18 +68,17 @@ pm2 stop powerconnect
 ```env
 PORT=3000
 USERNAME=admin
-PASSWORD=your-password
+PASSWORD=wangmiao0308
 JWT_SECRET=your-secret-key
-FS_ROOT_DIR=/path/to/root
+FS_ROOT_DIR=/Users/mac
 ```
 
-## 安全提示
+## 默认登录凭据
 
-⚠️ **部署前必改**:
-- [ ] 修改 USERNAME 和 PASSWORD
-- [ ] 使用强密码（至少 12 位，包含大小写字母、数字、符号）
-- [ ] 生产环境启用 HTTPS
-- [ ] 考虑使用 Tailscale 等内网穿透
+- **用户名**: `admin`
+- **密码**: `wangmiao0308`
+
+⚠️ **生产环境请修改密码和 JWT_SECRET**
 
 ## 功能说明
 
@@ -144,14 +166,14 @@ npm run dev  # 查看错误信息
 # 登录
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
-  -d '{"username":"admin","password":"admin"}'
+  -d '{"username":"admin","password":"wangmiao0308"}'
 
 # 创建终端 (需要 token)
 curl -X POST http://localhost:3000/api/terminal \
   -H "Authorization: Bearer YOUR_TOKEN"
 
 # 列出文件
-curl http://localhost:3000/api/fs/list?path=/ \
+curl http://localhost:3000/api/fs/list?path=/Users/mac \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 

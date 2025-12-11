@@ -2,7 +2,7 @@
  * API service for backend communication
  */
 
-const API_BASE = import.meta.env.PROD ? '' : 'http://localhost:3000';
+const API_BASE = import.meta.env?.PROD ? '' : 'http://localhost:3000';
 
 /**
  * Get auth token from localStorage
@@ -38,9 +38,9 @@ export function isAuthenticated(): boolean {
 async function fetchAPI(url: string, options: RequestInit = {}) {
   const token = getToken();
 
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    ...options.headers,
+    ...(options.headers as Record<string, string>),
   };
 
   if (token) {
@@ -174,6 +174,6 @@ export async function renameFile(oldPath: string, newPath: string): Promise<void
 export function getTerminalWebSocketUrl(sessionId: string): string {
   const token = getToken();
   const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const wsHost = import.meta.env.PROD ? window.location.host : 'localhost:3000';
+  const wsHost = import.meta.env?.PROD ? window.location.host : 'localhost:3000';
   return `${wsProtocol}//${wsHost}/ws/terminal/${sessionId}?token=${token}`;
 }

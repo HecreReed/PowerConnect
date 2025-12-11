@@ -10,7 +10,7 @@ interface FileListProps {
   onRefresh: () => void;
 }
 
-export default function FileList({ items, currentPath, onNavigate, onRefresh }: FileListProps) {
+export default function FileList({ items, currentPath, onNavigate }: FileListProps) {
   const formatSize = (bytes: number): string => {
     if (bytes === 0) return '0 B';
     const k = 1024;

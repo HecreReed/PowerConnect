@@ -9,7 +9,7 @@ interface XTerminalProps {
   onClose?: () => void;
 }
 
-export default function XTerminal({ sessionId, onClose }: XTerminalProps) {
+export default function XTerminal({ sessionId }: XTerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null);
   const terminal = useRef<Terminal | null>(null);
   const fitAddon = useRef<FitAddon | null>(null);
