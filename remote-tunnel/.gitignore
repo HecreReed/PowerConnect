@@ -1,0 +1,22 @@
+logs/
+pids/
+*.log
+*.pid
+
+# frp 二进制文件
+frp/frpc
+frp/frps
+
+# 临时文件
+*.tmp
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# 敏感配置（如果你修改了 token 等）
+# 取消注释下面的行以忽略包含敏感信息的配置
+# config/tunnel.conf
+# config/frp/frpc.ini

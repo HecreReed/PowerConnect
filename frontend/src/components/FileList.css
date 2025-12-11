@@ -1,0 +1,168 @@
+.file-list {
+  width: 100%;
+}
+
+.empty-directory {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 16px;
+}
+
+/* Desktop table view */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #252525;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.file-table thead {
+  background: #2d2d2d;
+}
+
+.file-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #aaaaaa;
+  border-bottom: 1px solid #3e3e3e;
+}
+
+.file-table tbody tr {
+  border-bottom: 1px solid #2d2d2d;
+  transition: background 0.2s;
+}
+
+.file-table tbody tr:hover {
+  background: #2d2d2d;
+}
+
+.file-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #e5e5e5;
+}
+
+.col-icon {
+  width: 40px;
+  font-size: 20px;
+}
+
+.col-name {
+  min-width: 200px;
+}
+
+.col-size {
+  width: 120px;
+}
+
+.col-date {
+  width: 200px;
+  color: #aaaaaa;
+}
+
+.col-actions {
+  width: 80px;
+  text-align: center;
+}
+
+.action-button {
+  padding: 6px 12px;
+  background: #3e3e3e;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.action-button:hover {
+  background: #4a9eff;
+}
+
+/* Mobile card view */
+.file-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.file-card:active {
+  background: #2d2d2d;
+}
+
+.card-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #888;
+}
+
+.card-size::after {
+  content: '•';
+  margin-left: 12px;
+  color: #666;
+}
+
+.card-action {
+  padding: 10px;
+  background: #3e3e3e;
+  border-radius: 6px;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.card-action:active {
+  background: #4a9eff;
+}
+
+/* Responsive visibility */
+.desktop-only {
+  display: table;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+}
